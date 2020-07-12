@@ -32,8 +32,8 @@ jobs:
     - name: Inject version numbers
       run: |
         cd CustomCodeAnalyzers
-        sed -i 's/#.#.#/$BUILD_VERSION/g' qhy.codeanalyzers.props
-        sed -i 's/#.#.#/$BUILD_VERSION/g' qhy.codeanalyzers.nuspec
+        sed -i "s/#.#.#/$BUILD_VERSION/g" qhy.codeanalyzers.props
+        sed -i "s/#.#.#/$BUILD_VERSION/g" qhy.codeanalyzers.nuspec
     
     # Build Nuget package
     - name: Build Nuget Package
