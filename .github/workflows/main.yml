@@ -5,21 +5,16 @@ on:
     branches: [ master ]  
 
 jobs:
-
   build:
-
-    runs-on: ubuntu-latest
-
-
-    steps:
-   
+    runs-on: ubuntu-latest    
+    steps:   
     - uses: actions/checkout@v2
    
     - name: Setup .NET Core      
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-
+    # Env variables set up here can be accessed by the following steps
     - name: Set Env variables
       run: |
         echo '::set-env name=BUILD_VERSION::1.1.${{ github.run_number }}'
@@ -28,15 +23,13 @@ jobs:
       run: |
         cd CustomCodeAnalyzers
         sed -i "s/#.#.#/$BUILD_VERSION/g" qhy.codeanalyzers.props
-        sed -i "s/#.#.#/$BUILD_VERSION/g" qhy.codeanalyzers.nuspec
+        sed -i "s/#.#.#/$BUILD_VERSION/g" qhy.codeanalyzers.nuspec    
     
-    # Build Nuget package
     - name: Build Nuget Package
       run: |
         cd CustomCodeAnalyzers
         dotnet pack -o ./nupkg        
-        
-    # publish Nuget package
+    
     - name: publish Nuget Package
       run: dotnet nuget push ./CustomCodeAnalyzers/nupkg/*.nupkg --skip-duplicate -k ${{secrets.NUGET_API_KEY}}  -s https://api.nuget.org/v3/index.json
 
