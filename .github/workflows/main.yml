@@ -34,13 +34,13 @@ jobs:
       with:
         find: "#.#.#"
         replace: $BUILD_VERSION
-        include: "qhy.codeanalyzers.props"
+        include: "qhy.codeanalyzers.*"
     
     # Build Nuget package
     - name: Build Nuget Package
       run: |
         cd CustomCodeAnalyzers
-        dotnet pack -p:NuspecFile=qhy.codeanalyzers.nuspec -Version $BUILD_VERSION -o ./nupkg        
+        dotnet pack -o ./nupkg        
         
     # publish Nuget package
     - name: publish Nuget Package

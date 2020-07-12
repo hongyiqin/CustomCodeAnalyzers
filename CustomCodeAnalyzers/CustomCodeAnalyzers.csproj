@@ -2,10 +2,12 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <PackageVersion>1.0</PackageVersion>
-        <Authors>Hongyi Qin</Authors>
-        <Description>Custom code analysis rules</Description>
+        <PackageVersion></PackageVersion>
+        <Authors></Authors>
+        <Description></Description>
         <IsPackable>true</IsPackable>
+        <NuspecFile>qhy.codeanalyzers.nuspec</NuspecFile>
+        <PackageId />
     </PropertyGroup>
 
 </Project>
