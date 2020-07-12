@@ -29,12 +29,11 @@ jobs:
       run: |
         echo '::set-env name=BUILD_VERSION::1.1.${{ github.run_number }}'
         
-    - name: update .props
-      uses: jacobtomlinson/gha-find-replace@master
-      with:
-        find: "#.#.#"
-        replace: $BUILD_VERSION
-        include: "qhy.codeanalyzers.*"
+    - name: Inject version numbers
+      run: |
+        cd CustomCodeAnalyzers
+        sed -i 's/#.#.#/$BUILD_VERSION/g' qhy.codeanalyzers.props
+        sed -i 's/#.#.#/$BUILD_VERSION/g' qhy.codeanalyzers.nuspec
     
     # Build Nuget package
     - name: Build Nuget Package
