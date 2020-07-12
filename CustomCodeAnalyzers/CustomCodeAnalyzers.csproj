@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <PackageVersion>1.0</PackageVersion>
+        <Authors>Hongyi Qin</Authors>
+        <Description>Custom code analysis rules</Description>
+        <IsPackable>true</IsPackable>
+    </PropertyGroup>
+
+</Project>

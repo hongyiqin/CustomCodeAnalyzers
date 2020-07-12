@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+    <metadata>
+        <id>qhy.codeanalyzers</id>
+        <version>1.0.5</version>
+        <authors>Hongyi Qin</authors>
+        <description>Code analyzer with custom stylecop and fxcop rules</description>
+        <dependencies>
+            <dependency id="StyleCop.Analyzers" version="1.1.118" />
+            <dependency id="Microsoft.CodeAnalysis.FxCopAnalyzers" version="3.0.0" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="stylecop.json" target="" />
+        <file src="fxcop.ruleset" target="" />
+        <file src="stylecop.ruleset" target="" />
+        <file src="qhy.codeanalyzers.ruleset" target="" />
+        <file src="qhy.codeanalyzers.props" target="build" />
+    </files>
+</package>
