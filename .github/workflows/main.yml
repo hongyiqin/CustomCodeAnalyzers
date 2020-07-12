@@ -20,15 +20,29 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - name: Setup .NET Core
+      
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
 
-    # Build nuget package
     - name: Set version
       run: |
         echo '::set-env name=BUILD_VERSION::1.1.${{ github.run_number }}'
-        echo ${BUILD_VERSION}
+        echo $BUILD_VERSION
+        
+    - name: update .props
+      uses: jacobtomlinson/gha-find-replace@master
+      with:
+        find: "#.#.#"
+        replace: $BUILD_VERSION
+        include: "qhy.codeanalyzers.props"
+    
+    # Build Nuget package
+    - name: Build Nuget Package
+      run: |
+        cd CustomCodeAnalyzers
+        dotnet pack -p:NuspecFile=qhy.codeanalyzers.nuspec -o nupkg
+ 
 
         
         
