@@ -40,11 +40,13 @@ jobs:
     - name: Build Nuget Package
       run: |
         cd CustomCodeAnalyzers
-        dotnet pack -p:NuspecFile=qhy.codeanalyzers.nuspec -Version $BUILD_VERSION -o nupkg        
+        dotnet pack -p:NuspecFile=qhy.codeanalyzers.nuspec -Version $BUILD_VERSION -o ./nupkg        
         
     # publish Nuget package
     - name: publish Nuget Package
-      run: dotnet nuget push ./CustomCodeAnalyzers/nupkg/*.nupkg --skip-duplicate -k ${{secrets.NUGET_API_KEY}}  -s https://api.nuget.org/v3/index.json
+      run: |
+        ls ./CustomCodeAnalyzers/        
+        dotnet nuget push ./CustomCodeAnalyzers/nupkg/*.nupkg --skip-duplicate -k ${{secrets.NUGET_API_KEY}}  -s https://api.nuget.org/v3/index.json
 
  
 
