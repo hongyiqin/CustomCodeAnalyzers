@@ -23,5 +23,5 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Run a test script
       run: |
-        echo ${{ github.run_id }}
+        echo ${{ github.run_number }}
         
