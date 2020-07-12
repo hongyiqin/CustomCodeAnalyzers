@@ -2,7 +2,7 @@
 <package>
     <metadata>
         <id>qhy.codeanalyzers</id>
-        <version>$BUILD_VERSION$</version>
+        <version>$version$</version>
         <authors>Hongyi Qin</authors>
         <description>Code analyzer with custom stylecop and fxcop rules</description>
         <dependencies>
