@@ -19,9 +19,16 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
 
     # Runs a set of commands using the runners shell
-    - name: Run a test script
+    - name: Set version number
       run: |
-        echo ${{ github.run_number }}
+        echo ${VERSION}
+      env:
+        VERSION: "1.1.${{ github.run_number }}"
+        
         
