@@ -44,9 +44,7 @@ jobs:
         
     # publish Nuget package
     - name: publish Nuget Package
-      run: |
-        ls        
-        dotnet nuget push ./CustomCodeAnalyzers/nupkg/*.nupkg --skip-duplicate -k ${{secrets.NUGET_API_KEY}}  -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push ./CustomCodeAnalyzers/nupkg/*.nupkg --skip-duplicate -k ${{secrets.NUGET_API_KEY}}  -s https://api.nuget.org/v3/index.json
 
  
 
