@@ -28,7 +28,6 @@ jobs:
     - name: Set version
       run: |
         echo '::set-env name=BUILD_VERSION::1.1.${{ github.run_number }}'
-        echo $BUILD_VERSION
         
     - name: update .props
       uses: jacobtomlinson/gha-find-replace@master
@@ -41,13 +40,14 @@ jobs:
     - name: Build Nuget Package
       run: |
         cd CustomCodeAnalyzers
-        dotnet pack -p:NuspecFile=qhy.codeanalyzers.nuspec -Version $BUILD_VERSION -o nupkg        
+        dotnet pack -p:NuspecFile=qhy.codeanalyzers.nuspec -Version $BUILD_VERSION -o nupkg
+        ls
         
     # publish Nuget package
     - name: publish Nuget Package
       run: |
-        cd nupkg
         ls
+        cd nupkg        
         dotnet nuget push *.nupkg --skip-duplicate -k ${{secrets.NUGET_API_KEY}}  -s https://api.nuget.org/v3/index.json
 
  
